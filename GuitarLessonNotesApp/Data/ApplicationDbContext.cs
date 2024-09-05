@@ -12,5 +12,6 @@ namespace GuitarLessonNotesApp.Data
 
         public DbSet<Student> Students { get; set; }
         public DbSet<LessonNote> LessonNotes { get; set; }
+        public DbSet<Attachment> Attachments { get; set; }
     }
 }
