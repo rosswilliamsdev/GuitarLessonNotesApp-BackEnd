@@ -34,6 +34,16 @@ namespace GuitarLessonNotesApp.Data
                 .WithOne(a => a.LessonNote)
                 .HasForeignKey(a => a.LessonNoteId);
 
+            // Seed the admin user
+            modelBuilder.Entity<User>().HasData(new User
+            {
+                Id = 1,
+                Name = "Admin",
+                Email = "rwillguitar@gmail.com",
+                PasswordHash = "hashedpassword",
+                Role = "Admin"
+            });
+
             // Additional configuration if needed
             base.OnModelCreating(modelBuilder);
         }

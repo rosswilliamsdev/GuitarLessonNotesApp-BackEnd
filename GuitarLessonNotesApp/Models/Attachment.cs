@@ -7,7 +7,7 @@
         public string FileName { get; set; }
         public long FileSize { get; set; }
         public DateTime UploadDate { get; set; }
-        public int LessonNoteId { get; set; } //Foreign key
+        public int LessonNoteId { get; set; } //Foreign key to LessonNote
         public LessonNote LessonNote { get; set; } //Navigation property
     }
 
