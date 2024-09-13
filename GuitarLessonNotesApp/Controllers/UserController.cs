@@ -27,6 +27,7 @@ namespace GuitarLessonNotesApp.Controllers
         }
 
         //POST api/User
+        [HttpPost]
         public async Task<IActionResult> Post(User user)
         {
             if (string.IsNullOrEmpty(user.Role))
@@ -56,7 +57,7 @@ namespace GuitarLessonNotesApp.Controllers
             return Ok("User removed.");
         }
 
-        //Adding the admin user
+        // POST: api/User/add-admin
         [HttpPost("add-admin")]
         public async Task<IActionResult> AddAdmin(User adminUser)
         {

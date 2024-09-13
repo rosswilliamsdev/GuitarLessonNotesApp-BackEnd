@@ -1,5 +1,7 @@
 ﻿using GuitarLessonNotesApp.Models;
 using Microsoft.EntityFrameworkCore;
+using BCrypt.Net;
+using System.ComponentModel.DataAnnotations;
 
 namespace GuitarLessonNotesApp.Data
 {
@@ -34,13 +36,15 @@ namespace GuitarLessonNotesApp.Data
                 .WithOne(a => a.LessonNote)
                 .HasForeignKey(a => a.LessonNoteId);
 
-            // Seed the admin user
+            // Seed the admin user with a proper BCrypt hash
+            var passwordHash = BCrypt.Net.BCrypt.HashPassword("Longshot7", workFactor: 12);
+
             modelBuilder.Entity<User>().HasData(new User
             {
                 Id = 1,
                 Name = "Admin",
                 Email = "rwillguitar@gmail.com",
-                PasswordHash = "hashedpassword",
+                PasswordHash = passwordHash, // Properly hashed password
                 Role = "Admin"
             });
 
